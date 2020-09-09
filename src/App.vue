@@ -22,3 +22,9 @@ import Appbar from '@/components/Appbar.vue';
 export default class App extends Vue {
 }
 </script>
+
+<style lang="css">
+.v-application {
+  font-family: 'Montserrat', sans-serif;
+}
+</style>
