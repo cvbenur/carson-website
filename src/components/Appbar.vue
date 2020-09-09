@@ -28,5 +28,17 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component({})
 export default class Appbar extends Vue {
+  private sidebar: boolean = false;
+
+  private items = [
+    {
+      title: 'Add to Discord',
+      to: 'https://discord.com/api/oauth2/authorize?client_id=696334203490664460&permissions=67497024&scope=bot',
+    },
+    {
+      title: 'Commands',
+      to: '',
+    },
+  ];
 }
 </script>
