@@ -1,9 +1,10 @@
 <template>
   <v-footer
+    height="200"
     app
     color="#820F54"
     class="white--text"
-    abslolute
+    absolute
     padless
   >
     <v-card
@@ -12,38 +13,115 @@
       tile
       color="#820F54"
     >
-      <v-card-title>
-        <v-row justify="center">
-          <v-col cols="12" sm="6">
-            <p
-              class="white--text flex-nowrap"
-              style="font-size: 0.8rem;"
-            >With <strong>Carson</strong>, your insights are just a command away.</p>
-          </v-col>
-          <v-col cols="12" sm="6" class="">
-            <p
-              class="white--text flex-nowrap"
-              style="font-size: 0.8rem;"
-            >
-              Carson and this website were both written by
-               <strong style="color: #78A4FA">Benur#1598</strong>.
-            </p>
+      <v-row
+        no-gutters
+        align="center"
+        justify="space-around"
+        class="white--text"
+      >
+        <v-col
+          cols="12"
+          sm="4"
+          class="text-center my-4"
+        >
+          <v-card-text style="font-size: 1.5rem">
+            Your server stats, <strong>made simple</strong>.
+          </v-card-text>
+          <v-card-text>
+        Carson is an easy to use, but <strong>very sassy</strong> StatBot for your Discord server.
+          </v-card-text>
+        </v-col>
+
+        <v-col
+          cols="12"
+          sm="4"
+          class="text-center my-4"
+        >
+          <v-btn
+            class="font-weight-bold text-none"
+            dark
+            :href="'https://discord.com/api/oauth2/authorize?client_id=696334203490664460&permissions=67497024&scope=bot'"
+            color="#B41172"
+            :elevation="3"
+            x-large
+            ripple
+          >
+            Add to Discord
+          </v-btn>
+        </v-col>
+
+        <v-col
+          cols="12"
+          sm="4"
+          class="text-center my-4"
+        >
+          <v-card-text>
+            Follow Carson on social media !
+          </v-card-text>
+
+          <div class="mb-5">
             <v-btn
-              v-for="icon in icons"
-              :key="icon.title"
+              v-for="(icon, i) in icons"
+              :key="i"
+              :href="icon.to"
               icon
               dark
-              :href="icon.to"
-              target="_blank"
+              class="mx-4"
+              ripple
             >
-              <v-icon>{{ icon.icon }}</v-icon>
+              <v-icon
+                size="40px"
+              >
+                {{ icon.icon }}
+              </v-icon>
             </v-btn>
-          </v-col>
-        </v-row>
-      </v-card-title>
+          </div>
+        </v-col>
+      </v-row>
 
-      <v-card-text class="py-2 white--text text-center" style="font-size: 0.75rem">
-        <p>© 2020 - <strong>Carson the Statbot</strong></p>
+      <v-divider></v-divider>
+
+      <v-row
+        no-gutters
+        align="center"
+        justify="center"
+        class="white--text"
+      >
+        <v-col cols="12" sm="3" class="text-center my-3"><v-card-text>Colonne</v-card-text></v-col>
+        <v-col cols="12" sm="3" class="text-center my-3"><v-card-text>Colonne</v-card-text></v-col>
+        <v-col cols="12" sm="3" class="text-center my-3"><v-card-text>Colonne</v-card-text></v-col>
+
+        <v-col cols="12" sm="3" class="text-center my-3">
+          <v-card-text
+            class="py-2"
+            style="font-size: 0.75rem">
+            Written by <strong style="color: #78A4FA" class="ml-1">
+              <v-icon size="20px" color="#78A4FA">
+                fab fa-discord
+              </v-icon> Benur#1598
+            </strong>
+          </v-card-text>
+          <v-btn
+            v-for="(icon, i) in icons"
+            :key="i"
+            :href="icon.to"
+            icon
+            dark
+            ripple
+          >
+            <v-icon
+              size="20px"
+            >
+              {{ icon.icon }}
+            </v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+
+      <v-card-text
+        class="py-2 white--text text-center"
+        style="font-size: 0.75rem">
+        &copy; 2020 - <strong>Carson the Statbot</strong>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -64,6 +142,16 @@ export default class Footer extends Vue {
       title: 'LinkedIn',
       icon: 'fab fa-linkedin',
       to: 'https://www.linkedin.com/in/ruben-nabet-9798401b6/',
+    },
+    {
+      title: 'Twitter',
+      icon: 'fab fa-twitter',
+      to: '/',
+    },
+    {
+      title: 'Discord',
+      icon: 'fab fa-discord',
+      to: '/',
     },
   ];
 }
