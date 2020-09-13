@@ -3,8 +3,10 @@
     <Appbar/>
 
     <v-main>
-      <Home/>
+      <router-view/>
     </v-main>
+
+    <Footer/>
   </v-app>
 </template>
 
@@ -12,11 +14,13 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Home from '@/views/Home.vue';
 import Appbar from '@/components/Appbar.vue';
+import Footer from '@/components/Footer.vue';
 
 @Component({
   components: {
     Appbar,
     Home,
+    Footer,
   },
 })
 export default class App extends Vue {

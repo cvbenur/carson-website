@@ -43,21 +43,22 @@
         depressed
         class="white--text text-none font-weight-black mx-2"
         style="font-size: 1rem"
-        v-for="item in items"
-        :key="item.title"
+        v-for="(item, i) in items"
+        :key="i"
         :href="item.to"
+        ripple
       >
         {{ item.title }}
       </v-btn>
     </v-toolbar-items>
 
     <v-navigation-drawer
+      app
       color="primary"
       right
       v-model="sidebar"
-      app
-      temporary
       absolute
+      temporary
     >
       <v-list>
         <v-list-item>
@@ -76,8 +77,8 @@
         <v-list-item
           class="white--text text-none font-weight-black mx-2"
           style="font-size: 1.75rem"
-          v-for="item in items"
-          :key="item.title"
+          v-for="(item, i) in items"
+          :key="i"
           :href="item.to"
         >
           <v-list-item-content>
