@@ -22,7 +22,7 @@
         <v-col
           cols="12"
           sm="4"
-          class="text-center my-4"
+          class="text-center text-sm-left my-4"
         >
           <v-card-text style="font-size: 1.5rem">
             Your server stats, <strong>made simple</strong>.
@@ -41,7 +41,7 @@
             class="font-weight-bold text-none"
             dark
             :href="'https://discord.com/api/oauth2/authorize?client_id=696334203490664460&permissions=67497024&scope=bot'"
-            color="#B41172"
+            color="secondary"
             :elevation="3"
             x-large
             ripple
@@ -53,7 +53,7 @@
         <v-col
           cols="12"
           sm="4"
-          class="text-center my-4"
+          class="text-center text-sm-right my-4"
         >
           <v-card-text>
             Follow Carson on social media !
