@@ -1,5 +1,34 @@
 <template>
-  <div></div>
+  <v-container fluid>
+    <v-card color="secondary">
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+      <v-card-text>Home</v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script lang="ts">

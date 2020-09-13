@@ -3,7 +3,7 @@
     <Appbar/>
 
     <v-main>
-      <Home/>
+      <router-view/>
     </v-main>
 
     <Footer/>

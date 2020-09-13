@@ -16,11 +16,19 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
+    path: '/commands',
+    name: 'Commands',
+    component: views.Commands,
+    meta: {
+      title: `${title}${views.Commands.name}`,
+    },
+  },
+  {
     path: '/about',
     name: 'About',
-    component: views.Home,
+    component: views.About,
     meta: {
-      title: `${title}About`,
+      title: `${title}${views.About.name}`,
     },
   },
 ];
