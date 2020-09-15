@@ -8,10 +8,6 @@
         {{ commandName }}
       </v-card-title>
 
-      <v-card-text class="white--text">
-        {{ category }}
-      </v-card-text>
-
       <v-card-text
         v-if="flags"
         class="white--text"
@@ -37,9 +33,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class Command extends Vue {
   @Prop({ required: true })
   commandName!: string;
-
-  @Prop({ required: true })
-  category!: string;
 
   @Prop({ required: true })
   usage!: string;

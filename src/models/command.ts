@@ -19,3 +19,10 @@ export default class Command {
     this.description = description;
   }
 }
+
+export enum Categories {
+  All = 'All',
+  Settings = 'Settings',
+  Info = 'Info',
+  Stats = 'Stats',
+}
