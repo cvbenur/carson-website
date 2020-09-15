@@ -107,6 +107,7 @@
             :href="icon.to"
             icon
             dark
+            hover
             ripple
           >
             <v-icon

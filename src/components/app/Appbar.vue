@@ -17,7 +17,7 @@
           <v-img
             alt="Carson Logo round"
             contain
-            src="@/assets/carsonround.png"
+            src="@/assets/img/carsonround.png"
             transition="scale-transition"
             aspect-ratio="1"
             href="/"
@@ -26,7 +26,7 @@
 
         <v-avatar width="175" height="60" tile class="ml-4">
           <v-img
-            src="@/assets/ctext.png"
+            src="@/assets/img/ctext.png"
             contain
             alt="Carson Logo text"
             transition="scale-transition"
