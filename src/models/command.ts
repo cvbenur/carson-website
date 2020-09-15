@@ -1,7 +1,7 @@
 export default class Command {
   name: string;
   category: string;
-  flags: Array<string>;
+  args: Array<string>;
   usage: string;
   description: string;
 
@@ -10,11 +10,11 @@ export default class Command {
     category: string,
     usage: string,
     description: string,
-    flags: Array<string> = [],
+    args: Array<string> = [],
   ) {
     this.name = name;
     this.category = category;
-    this.flags = flags;
+    this.args = args;
     this.usage = usage;
     this.description = description;
   }

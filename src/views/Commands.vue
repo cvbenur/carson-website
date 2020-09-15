@@ -150,7 +150,7 @@
           :key="i"
           :id="i"
           :commandName="command.name"
-          :flags="command.flags"
+          :args="command.args"
           :usage="command.usage"
           :description="command.description"
           @clicked="handleClick"/>
@@ -183,21 +183,21 @@ export default class Commands extends Vue {
       Categories.Stats,
       'this is how you use this command',
       'dis command do dat',
-      ['flag1', 'flag2', 'flag3'],
+      ['arg1', 'arg2', 'arg3'],
     ),
     new Command(
       'command2',
       Categories.Info,
       'this is how you use this command',
       'dis command do dat',
-      ['flag1'],
+      ['arg1'],
     ),
     new Command(
       'command3',
       Categories.Settings,
       'this is how you use this command',
       'dis command do dat',
-      ['flag1', 'flag2'],
+      ['arg1', 'arg2'],
     ),
     new Command(
       'ziak',
