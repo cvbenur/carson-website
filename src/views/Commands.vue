@@ -1,9 +1,19 @@
 <template>
   <v-container fluid>
-    <h1
-      class="white--text font-weight-bold text-center"
-      style="font-size: 40px"
-    >Command list</h1>
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col
+        cols="12"
+        sm="6"
+      >
+        <h1
+          class="white--text font-weight-bold text-center"
+          style="font-size: 40px"
+        >Commands list</h1>
+      </v-col>
+    </v-row>
 
     <v-row
       align="center"
@@ -38,34 +48,102 @@
     </v-row>
 
     <v-row
-      align="top"
       justify="center"
     >
-      <v-col cols="12" sm="4" class="pa-0 pr-4">
+      <v-col
+        cols="12"
+        sm="2"
+        class="pr-sm-4 pa-sm-0"
+      >
         <v-card
           color="#820F54"
           :elevation="2"
+          class="px-3"
         >
-          <div class="d-flex flex-wrap justify-center px-2 pt-2">
-            <v-btn
-              v-for="(cat, i) in categories"
-              block
-              :key="i"
-              color="secondary"
-              class="text-none mb-2"
-              :elevation="0"
-              ripple
-            >{{ cat }}</v-btn>
-          </div>
+          <v-row
+            align="center"
+            justify="center"
+            class="px-1 pt-4"
+          >
+            <v-col
+              cols="5"
+              sm="12"
+              class="py-0"
+            >
+              <v-btn
+                block
+                :color="cat === 'All' ? 'selected' : 'secondary'"
+                class="text-none white--text"
+                :elevation="0"
+                ripple
+                @click="cat = 'All'"
+              >All</v-btn>
+            </v-col>
+
+            <v-col
+              cols="7"
+              sm="12"
+              class="py-0 pl-0 pl-sm-3 pt-sm-3"
+            >
+              <v-btn
+                block
+                :color="cat === 'Settings' ? 'selected' : 'secondary'"
+                class="text-none white--text"
+                :elevation="0"
+                ripple
+                @click="cat = 'Settings'"
+              >Settings</v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row
+            align="center"
+            justify="center"
+            class="px-1 pt-3 pb-4"
+          >
+            <v-col
+              cols="7"
+              sm="12"
+              class="py-0"
+            >
+              <v-btn
+                block
+                :color="cat === 'Info' ? 'selected' : 'secondary'"
+                class="text-none white--text"
+                :elevation="0"
+                ripple
+                @click="cat = 'Info'"
+              >Info</v-btn>
+            </v-col>
+
+            <v-col
+              cols="5"
+              sm="12"
+              class="py-0 pl-0 pl-sm-3 pt-sm-3"
+            >
+              <v-btn
+                block
+                :color="cat === 'Stats' ? 'selected' : 'secondary'"
+                class="text-none white--text"
+                :elevation="0"
+                ripple
+                @click="cat = 'Stats'"
+              >Stats</v-btn>
+            </v-col>
+          </v-row>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="6" class="pa-0">
+
+      <v-col
+        cols="12"
+        sm="6"
+        class="pa-sm-0"
+      >
         <CommandTile
           class="pb-3"
           v-for="(command, i) in filteredSearch"
           :key="i"
           :commandName="command.name"
-          :category="command.category"
           :flags="command.flags"
           :usage="command.usage"
           :description="command.description"
@@ -79,7 +157,7 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import CommandTile from '@/components/CommandTile.vue';
 // eslint-disable-next-line no-unused-vars
-import Command from '@/models/command';
+import Command, { Categories } from '@/models/command';
 
 @Component({
   components: {
@@ -89,38 +167,33 @@ import Command from '@/models/command';
 export default class Commands extends Vue {
   public name: string = 'Commands';
   private search: string|null = null;
-  private categories: Array<string> = [
-    'All',
-    'Settings',
-    'Info',
-    'Stats',
-  ];
-
+  private cat: string = Categories.All;
+  private filteredSearch: Array<Command> = [];
   private commands: Array<Command> = [
     new Command(
       'command1',
-      'general',
+      Categories.Stats,
       'this is how you use this command',
       'dis command do dat',
       ['flag1', 'flag2', 'flag3'],
     ),
     new Command(
       'command2',
-      'info',
+      Categories.Info,
       'this is how you use this command',
       'dis command do dat',
       ['flag1'],
     ),
     new Command(
       'command3',
-      'settings',
+      Categories.Settings,
       'this is how you use this command',
       'dis command do dat',
       ['flag1', 'flag2'],
     ),
     new Command(
       'ziak',
-      'settings',
+      Categories.Settings,
       'this is how you use this command',
       'dis command do dat',
     ),
@@ -128,16 +201,24 @@ export default class Commands extends Vue {
 
   @Watch('search')
   searchChanged(newVal: string) {
-    this.filteredSearch = (
-      this.search == null
-        ? this.filteredSearch = this.commands
-        : this.filteredSearch = this.commands.filter(
-          c => c.name.toLowerCase().includes(newVal.toLowerCase()),
-        )
-    );
+    this.filterSearch(newVal, this.cat);
   }
 
-  private filteredSearch: Array<Command> = [];
+  @Watch('cat')
+  categoryChanged(newVal: string) {
+    this.filterSearch(this.search, newVal);
+  }
+
+  filterSearch(search: string|null, cat: string) {
+    this.filteredSearch = this.commands.filter((command: Command) => (
+      (search
+        ? command.name.toLowerCase().includes(search.toLowerCase())
+        : true)
+        && (cat !== Categories.All
+          ? command.category === cat
+          : true)
+    ));
+  }
 
   created() {
     this.filteredSearch = this.commands;
