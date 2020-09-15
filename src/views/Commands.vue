@@ -18,11 +18,12 @@
     <v-row
       align="center"
       justify="center"
+      class="pb-sm-3"
     >
       <v-col
         cols="12"
-        sm="5"
-        class="pb-0"
+        sm="6"
+        class="pa-sm-0"
       >
         <v-text-field
           v-model="search"
@@ -30,30 +31,31 @@
           clearable
           autofocus
           clear-icon="fas fa-times"
-          prepend-inner-icon="fas fa-search"
-          color="#820F54"
+          color="#3d0627"
           background-color="#820F54"
           label="Search commands..."
           single-line
           hide-details
-        ></v-text-field>
+        >
+          <v-icon
+            slot="prepend-inner"
+            color="#3d0627"
+          >fas fa-search</v-icon>
+        </v-text-field>
       </v-col>
     </v-row>
+
+    <v-spacer class="pb-sm-3"></v-spacer>
 
     <v-row
       align="center"
       justify="center"
-      class="py-3"
-    >
-    </v-row>
-
-    <v-row
-      justify="center"
+      class="pb-sm-3"
     >
       <v-col
         cols="12"
-        sm="2"
-        class="pr-sm-4 pa-sm-0"
+        sm="6"
+        class="pa-sm-0"
       >
         <v-card
           color="#820F54"
@@ -63,11 +65,11 @@
           <v-row
             align="center"
             justify="center"
-            class="px-1 pt-4"
+            class="px-1 py-4"
           >
             <v-col
               cols="5"
-              sm="12"
+              sm="3"
               class="py-0"
             >
               <v-btn
@@ -82,8 +84,8 @@
 
             <v-col
               cols="7"
-              sm="12"
-              class="py-0 pl-0 pl-sm-3 pt-sm-3"
+              sm="3"
+              class="py-0 pl-0"
             >
               <v-btn
                 block
@@ -94,17 +96,11 @@
                 @click="cat = 'Settings'"
               >Settings</v-btn>
             </v-col>
-          </v-row>
 
-          <v-row
-            align="center"
-            justify="center"
-            class="px-1 pt-3 pb-4"
-          >
             <v-col
               cols="7"
-              sm="12"
-              class="py-0"
+              sm="3"
+              class="py-sm-0 pt-3 pb-0 pl-sm-0"
             >
               <v-btn
                 block
@@ -118,8 +114,8 @@
 
             <v-col
               cols="5"
-              sm="12"
-              class="py-0 pl-0 pl-sm-3 pt-sm-3"
+              sm="3"
+              class="py-sm-0 pt-3 pb-0 pl-0"
             >
               <v-btn
                 block
@@ -133,7 +129,15 @@
           </v-row>
         </v-card>
       </v-col>
+    </v-row>
 
+    <v-spacer class="pb-sm-3"></v-spacer>
+
+    <v-row
+      align="center"
+      justify="center"
+      class="pb-3"
+    >
       <v-col
         cols="12"
         sm="6"
@@ -141,20 +145,24 @@
       >
         <CommandTile
           class="pb-3"
+          ref="tiles"
           v-for="(command, i) in filteredSearch"
           :key="i"
+          :id="i"
           :commandName="command.name"
           :flags="command.flags"
           :usage="command.usage"
           :description="command.description"
-          />
+          @clicked="handleClick"/>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import {
+  Vue, Component, Watch, Ref,
+} from 'vue-property-decorator';
 import CommandTile from '@/components/CommandTile.vue';
 // eslint-disable-next-line no-unused-vars
 import Command, { Categories } from '@/models/command';
@@ -218,6 +226,16 @@ export default class Commands extends Vue {
           ? command.category === cat
           : true)
     ));
+  }
+
+  @Ref() tiles!: Array<CommandTile>;
+
+  handleClick(data: { id: number; open: boolean }) {
+    if (data.open) {
+      for (let i = 0; i < this.tiles.length; i += 1) {
+        if (i !== data.id) this.tiles[i].expand = false;
+      }
+    }
   }
 
   created() {
