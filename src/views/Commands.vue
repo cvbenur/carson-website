@@ -29,7 +29,6 @@
           v-model="search"
           solo
           clearable
-          autofocus
           clear-icon="fas fa-times"
           color="#3d0627"
           background-color="#820F54"
