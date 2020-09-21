@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0">
+  <v-container fluid class="pa-0 ma-0">
     <v-row
       align="center"
       justify="center"
@@ -48,7 +48,7 @@
       </v-col>
     </v-row>
 
-    <Low/>
+    <Low class="low"/>
   </v-container>
 </template>
 
@@ -67,6 +67,10 @@ export default class Home extends Vue {
 
 <style scoped>
 .go-lower {
-  margin-bottom: -110px;
+  margin-bottom: -17vh;
+}
+
+.low {
+  margin-bottom: -2.5vh;
 }
 </style>
