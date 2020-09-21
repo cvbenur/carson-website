@@ -22,7 +22,7 @@
         <v-col
           cols="12"
           sm="4"
-          class="text-center my-4"
+          class="text-center text-sm-left my-4"
         >
           <v-card-text style="font-size: 1.5rem">
             Your server stats, <strong>made simple</strong>.
@@ -53,7 +53,7 @@
         <v-col
           cols="12"
           sm="4"
-          class="text-center my-4"
+          class="text-center text-sm-right my-4"
         >
           <v-card-text>
             Follow Carson on social media !
@@ -107,6 +107,7 @@
             :href="icon.to"
             icon
             dark
+            hover
             ripple
           >
             <v-icon
