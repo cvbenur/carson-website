@@ -30,15 +30,17 @@
           solo
           clearable
           clear-icon="fas fa-times"
-          color="#3d0627"
+          color="grey"
           background-color="#820F54"
           label="Search commands..."
           single-line
           hide-details
+          class="custom-label-grey font-weight-bold"
         >
           <v-icon
             slot="prepend-inner"
-            color="#3d0627"
+            color="grey"
+            class="mr-1"
           >fas fa-search</v-icon>
         </v-text-field>
       </v-col>
@@ -242,3 +244,14 @@ export default class Commands extends Vue {
   }
 }
 </script>
+
+<style>
+.custom-label-grey .v-label {
+  color: grey;
+  opacity: 1;
+}
+
+.custom-label-grey input{
+  color: grey!important;
+}
+</style>
