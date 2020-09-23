@@ -13,8 +13,12 @@
 
         <span>
           <strong>
-            {{ '-' + commandName }}
-          </strong> <span v-if="args.length > 0"><span>[{{ displayArgs() }}]</span></span>
+            {{ `-${commandName} ` }}
+          </strong>
+          <span
+            v-if="args.length > 0"
+          >[{{ displayArgs() }}]
+          </span>
         </span>
       </v-card-title>
 
