@@ -5,7 +5,6 @@
       justify="center"
     >
       <v-img
-        contain
         src="@/assets/img/low.svg"
         class="bg"
       ></v-img>
