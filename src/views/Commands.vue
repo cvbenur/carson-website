@@ -162,7 +162,7 @@
 import {
   Vue, Component, Watch, Ref,
 } from 'vue-property-decorator';
-import CommandTile from '@/components/CommandTile.vue';
+import CommandTile from '@/components/commands/CommandTile.vue';
 // eslint-disable-next-line no-unused-vars
 import Command, { Categories } from '@/models/command';
 
