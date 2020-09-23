@@ -67,7 +67,7 @@ export default class Home extends Vue {
 
 <style scoped>
 .go-lower {
-  margin-bottom: -17vh;
+  margin-bottom: -20vh;
 }
 
 .low {
